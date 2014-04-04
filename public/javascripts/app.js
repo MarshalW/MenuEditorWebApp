@@ -11,6 +11,22 @@ require.config({
 
 //业务代码
 require(['can', 'can.fixture', 'can.ejs'], function (can) {
+
+    var MenuItem=can.Model({
+        findAll: 'GET /menu'
+    },{});
+
+     // can.fixture({
+     //    'GET /menu':function(){
+     //        return {
+     //            data:[
+     //                {name:'意大利面条', price:'20'},
+     //                {name:'肥牛饭', price:'22'}
+     //            ]
+     //        };
+     //    }
+     // });
+
 	//导航控件
 	var NaviBarWidget=can.Control({
 		init: function () {
@@ -59,13 +75,16 @@ require(['can', 'can.fixture', 'can.ejs'], function (can) {
             this.element.html(
                 can.view('../views/menuform.ejs')
             );
+        },
+        'button click':function(el){
+            window.location.hash='#list';
         }
 	});
-
 
 	//集成页面控件的对象
 	var AppWidgetWrapper=can.Control({
 		init: function () {
+            this.checkCommand();
             this.navibar=new NaviBarWidget('#navi',naviBars);
             this.setContentWidget();
             var self=this;
@@ -81,11 +100,28 @@ require(['can', 'can.fixture', 'can.ejs'], function (can) {
             	self.setContentWidget();
             });
         },
+        checkCommand:function(){
+            console.log(window.location.hash);
+            if(window.location.hash=='#list'){
+                naviBars.attr('currentIndex',0);
+                return;
+            }
+            if(window.location.hash=='#create'){
+                naviBars.attr('currentIndex',1);
+                return;
+            }
+        },
         setContentWidget:function(){
+            if(this.content){
+                this.content.destroy();
+            }
+
         	switch(naviBars.attr('currentIndex')){
         		case('0'):
         		case(0):
-        			this.content=new MenuListWidget('#content');
+                    MenuItem.findAll({},function(menuItems){
+                        this.content=new MenuListWidget('#content',{menulist:menuItems});
+                    });
         			break;
         		case('1'):
         		case(1):

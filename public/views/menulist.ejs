@@ -1,1 +1,9 @@
-列表
+<p>
+
+<% can.each(this, function(menuItem, index) { %>
+<div>
+<%= menuItem.name+', ￥'+menuItem.price %>
+</div>
+<% }); %>
+
+</p>

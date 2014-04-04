@@ -11,12 +11,13 @@
     "node_modules",
     "public/bower_components",
     "test",
-    "tests"
+    "tests",
+    "bower_components"
   ],
   "devDependencies": {
-    "requirejs":"",
-    "bootstrap":"",
-    "canjs":"",
+    "requirejs": "",
+    "bootstrap": "",
+    "canjs": "",
     "jquery": ""
   }
 }

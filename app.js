@@ -28,7 +28,13 @@ if ('development' == app.get('env')) {
 
 //获取菜单内容列表
 app.get('/menu',function(req,res){
-	res.send('menu list');
+	var results={
+                data:[
+                    {name:'意大利面条', price:'20'},
+                    {name:'肥牛饭', price:'22'}
+                ]
+    };
+	res.send(results);
 });
 
 //创建菜单条目
