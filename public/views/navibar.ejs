@@ -1,0 +1,11 @@
+<%
+var currentIndex=this.currentIndex;
+%>
+<% can.each(this.bars, function(bar, index) { %>
+<% if (currentIndex==index) { %>
+<a><%= bar.title %></a>	
+<% }else{ %>
+<a href='<%= bar.anchor%>'><%= bar.title %></a>
+<% } %>  
+<% }); %>
+

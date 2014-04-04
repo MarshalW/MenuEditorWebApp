@@ -1,0 +1,22 @@
+{
+  "name": "MenuDemo",
+  "version": "0.1",
+  "authors": [
+    "Marshal <marshal.wu@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "http://blog.shiqichan.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "requirejs":"",
+    "bootstrap":"",
+    "canjs":"",
+    "jquery": ""
+  }
+}
